@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/img1.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/img2.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+<div class="d-flex">
+    <div class="card mx-1 my-2" >
+        <img src="{% static 'image/img1.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card mx-1 my-2" >
+        <img src="{% static 'image/img1.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card mx-1 my-2" >
+        <img src="{% static 'image/img1.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <h2>All Student Profile</h2><hr>
+        {% for s in v_students %}
+        <div class="col-6 col-md-4 col-lg-3">       
+          <div class="card mx-1 my-2 shadow" >   
+            <a href="{% url 'student-detail' s.pk %}"><img src="{{ s.image.url }}" class="card-img-top" alt="..."></a>
+            <div class="card-body">
+              <a class="btn btn-danger" href="{% url 'student-delete' s.pk %}">Delete</a>
+              <h5 class="card-title">{{ s.student_name  }}</h5>
+              <p class="card-text">{{ s.roll }}</p>
+              <p class="card-text">{{ s.department.department_name }} <span class="text-info">({{ s.department.s_session }})</span> </p>
+            </div>
+         </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <h2>All CSE Students Profile</h2><hr>
+      {% for s in cse_students %}
+      <div class="col-6 col-md-4 col-lg-3">       
+        <div class="card mx-1 my-2 shadow" >
+          <a href="{% url 'student-detail' s.pk %}"><img src="{{ s.image.url }}" class="card-img-top" alt="..."></a>
+          <div class="card-body">
+            <a class="btn btn-warning" href="{% url 'student-update' s.pk %}">update</a>
+            <h5 class="card-title">{{ s.student_name  }}</h5>
+            <p class="card-text">{{ s.roll }}</p>
+            <p class="card-text">{{ s.department.department_name }} <span class="text-info">({{ s.department.s_session }})</span> </p>
+          </div>
+       </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+<div class="container my-4">
+    <div class="card shadow">
+        <div class="row">
+            <div class="col-md-6 my-auto text-center">
+                <h3 class="">Contact US</h3>
+            </div>
+            <div class="col-md-6">
+                <form action="" class="p-2" method="POST">
+                  {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Your Name</label>
+                        {{ c_form.name }}
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email</label>
+                        {{ c_form.email }}
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Subject</label>
+                        {{ c_form.subject }}
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                        {{ c_form.message }}
+                        <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="message"></textarea> -->
+                      </div>
+                      <!-- {{ c_form }}               -->
+                      <button class="btn btn-info btn-sm" type="submit">Send</button>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

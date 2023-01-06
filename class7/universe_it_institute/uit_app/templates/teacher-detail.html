@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2>Teacher Profile Details</h2><hr>
+            <div class="col-12">       
+              <div class="card mx-1 my-2 shadow" >
+                <div class="row">
+                    <div class="col-6">
+                        <img src="{{ object.image.url }}" class="card-img-top" alt="..." style="width: 100%;">
+                    </div>
+                    <div class="col-6 my-auto">
+                        <div class="card-body ">
+                            <h5 class="card-title">{{ object.name  }}</h5>
+                            <p class="card-text">{{ object.designation  }} <span class="text-info"></p>
+                          </div>
+                    </div>
+                </div>
+
+             </div>
+            </div>
+        </div>
+      </div>
+      
+{% endblock content %}

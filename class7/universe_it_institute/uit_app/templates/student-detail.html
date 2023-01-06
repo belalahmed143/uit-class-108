@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2>Students Profile Details</h2><hr>
+            <div class="col-12">       
+              <div class="card mx-1 my-2 shadow" >
+                <div class="row">
+                    <div class="col-6">
+                        <img src="{{ student.image.url }}" class="card-img-top" alt="..." style="width: 100%;">
+                    </div>
+                    <div class="col-6 my-auto">
+                        <div class="card-body ">
+                            <h5 class="card-title">{{ student.student_name  }}</h5>
+                            <p class="card-text">{{ student.roll }}</p>
+                            <p class="card-text">{{ student.department.department_name }} <span class="text-info">({{ student.department.s_session }})</span> </p>
+                          </div>
+                    </div>
+                </div>
+
+             </div>
+            </div>
+        </div>
+      </div>
+      
+{% endblock content %}
+    

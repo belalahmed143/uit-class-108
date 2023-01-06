@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <div class="container">
+        <div class="row">
+            <h2>Students Profile</h2><hr>
+            {% for s in students %}
+            <div class="col-12">       
+              <div class="card mx-1 my-2 shadow" >
+                <div class="row">
+                    <div class="col-6">
+                        <img src="{{ s.image.url }}" class="card-img-top" alt="..." style="width: 100%;">
+                    </div>
+                    <div class="col-6 my-auto">
+                        
+                        <div class="card-body ">
+                            <h5 class="card-title">{{ s.student_name  }}</h5>
+                            <p class="card-text">{{ s.roll }}</p>
+                            <p class="card-text">{{ s.department.department_name }} <span class="text-info">({{ s.department.s_session }})</span> </p>
+                          </div>
+                    </div>
+                </div>
+
+             </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+      
+{% endblock content %}
+    

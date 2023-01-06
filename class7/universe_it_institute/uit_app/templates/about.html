@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% load student_data %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2>All Student Profile</h2><hr>
+            {% for s in request|all_student %}
+            <div class="col-6 col-md-4 col-lg-3">       
+              <div class="card mx-1 my-2 shadow" >
+                <img src="{{ s.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ s.student_name  }}</h5>
+                  <p class="card-text">{{ s.roll }}</p>
+                  <p class="card-text">{{ s.department.department_name }} <span class="text-info">({{ s.department.s_session }})</span> </p>
+                </div>
+             </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h2>All CSE Students Profile</h2><hr>
+            {% for s in request|cse_student %}
+            <div class="col-6 col-md-4 col-lg-3">       
+              <div class="card mx-1 my-2 shadow" >
+                <img src="{{ s.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ s.student_name  }}</h5>
+                  <p class="card-text">{{ s.roll }}</p>
+                  <p class="card-text">{{ s.department.department_name }} <span class="text-info">({{ s.department.s_session }})</span> </p>
+                </div>
+             </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h2>All EEE Students Profile</h2><hr>
+            {% for s in request|eee_student %}
+            <div class="col-6 col-md-4 col-lg-3">       
+              <div class="card mx-1 my-2 shadow" >
+                <img src="{{ s.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ s.student_name  }}</h5>
+                  <p class="card-text">{{ s.roll }}</p>
+                  <p class="card-text">{{ s.department.department_name }} <span class="text-info">({{ s.department.s_session }})</span> </p>
+                </div>
+             </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+{% endblock %}
